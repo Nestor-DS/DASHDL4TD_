@@ -1,11 +1,51 @@
+/* Carga la fuente personalizada desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
+/* Define los estilos para la fuente personalizada */
+.pixelify-sans {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Puedes ajustar el peso según tus preferencias */
+    font-style: normal;
+}
+
+/* Puedes definir otras clases con diferentes pesos si lo necesitas */
+.pixelify-sans-bold {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700; /* Por ejemplo, un peso más pesado */
+    font-style: normal;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
 }
 
 /* Estilos para la tabla */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 1rem;
+
+    /* Añade bordes redondeados a la tabla */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 2);
+}
+
+/* Estilos para las cabeceras de la tabla */
+th {
+    /* Define el color de fondo y el color del texto para las cabeceras de la tabla */
+    background-color: #0051ff;
+    color: #1d0101; /* Cambiado el color del texto a blanco para que resalte */
+    text-align: center; /* Alinear el texto a la izquierda */
+    padding: 8px; /* Ajustar el relleno */
 }
 
 th, td {
@@ -14,10 +54,11 @@ th, td {
     padding: 8px;
 }
 
-th {
-    background-color: #ff6161;
-}
-
 tr:hover {
     background-color: #ff6767;
+    color: #00ff15;
+
+    /* Añade un efecto de sombra al pasar el ratón por encima de las filas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    
 }
