@@ -1,21 +1,17 @@
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc, html
 from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
 from app import app
 
-# Cargar el dataset original
+# Load the original dataset
 data_path = "./data/drinking_water_potability.csv"
 df = pd.read_csv(data_path)
 
-# Estilos CSS personalizados
-external_stylesheets = ['https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css']
-
-# Lista de opciones de gráficos
+# Define the graph types
 graph_types = ['Histograma', 'Gráfico de Dispersión', 'Gráfico de Violín', 'Gráfico de Cajas']
 
-# Diseñar el layout de la página
+# Design the page layout
 layout = html.Div(
     style={'backgroundColor': '#f8f9fa', 'padding': '2rem'},
     children=[
@@ -25,7 +21,7 @@ layout = html.Div(
                 html.H1(
                     "Explorar Datos de Potabilidad del Agua",
                     className='text-center my-4',
-                    style={'font-size': '2.5rem', 'font-weight': 'bold'}
+                    style={'font-size': '2.5rem', 'font-weight': 'bold', 'color': '#4CAF50'}
                 ),
                 html.Div(
                     className='row justify-content-center',
@@ -72,7 +68,7 @@ layout = html.Div(
     ],
 )
 
-# Definir la callback para actualizar el gráfico según la característica y el tipo de gráfico seleccionados
+# Define the callback to update the graph based on selected feature and graph type
 @app.callback(
     Output('feature-graph', 'figure'),
     [Input('feature-dropdown', 'value'),
@@ -86,7 +82,7 @@ def update_graph(selected_feature, selected_graph_type):
             color='Potability', 
             barmode='overlay',
             title=f"Distribución de {selected_feature} por Potabilidad",
-            template='simple_white'
+            template='plotly_dark'  # Changed to a dark theme
         )
         fig.update_layout(
             title={'x':0.5, 'xanchor': 'center'},
@@ -100,7 +96,7 @@ def update_graph(selected_feature, selected_graph_type):
             x=selected_feature,
             y='Potability',
             title=f"{selected_feature} vs Potabilidad",
-            template='simple_white'
+            template='plotly_dark'  # Changed to a dark theme
         )
         fig.update_layout(
             title={'x':0.5, 'xanchor': 'center'},
@@ -116,7 +112,7 @@ def update_graph(selected_feature, selected_graph_type):
             points='all',
             color='Potability',
             title=f"Distribución de {selected_feature} por Potabilidad",
-            template='simple_white'
+            template='plotly_dark'  # Changed to a dark theme
         )
         fig.update_layout(
             title={'x':0.5, 'xanchor': 'center'},
@@ -130,7 +126,7 @@ def update_graph(selected_feature, selected_graph_type):
             x='Potability',
             y=selected_feature,
             title=f"{selected_feature} por Potabilidad",
-            template='simple_white'
+            template='plotly_dark'  # Changed to a dark theme
         )
         fig.update_layout(
             title={'x':0.5, 'xanchor': 'center'},

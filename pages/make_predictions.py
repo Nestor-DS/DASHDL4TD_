@@ -1,43 +1,42 @@
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc, html
 from dash.dependencies import Input, Output, State
 import pandas as pd
 import plotly.graph_objects as go
 from tensorflow.keras.models import model_from_json
 from app import app
 
-# Cargar el modelo final una sola vez
+# Load the model once
 def load_model():
     try:
-        # Cargar la arquitectura del modelo desde el archivo JSON
+        # Load the model architecture from JSON file
         with open("./models/best_model.json", "r") as json_file:
             loaded_model_json = json_file.read()
-        # Crear el modelo a partir de la arquitectura cargada
+        # Create the model from loaded architecture
         loaded_model = model_from_json(loaded_model_json)
-        # Cargar los pesos del modelo
+        # Load the model weights
         loaded_model.load_weights("./models/best_model_weights.h5")
         return loaded_model
     except Exception as e:
-        print(f"Error al cargar el modelo: {e}")
+        print(f"Error loading the model: {e}")
         return None
 
 loaded_model = load_model()
 
-# Cargar el dataset original
+# Load the original dataset
 data_path = "./data/drinking_water_potability.csv"
 df = pd.read_csv(data_path)
 
-# Estilos CSS embebidos
+# Embed CSS styles
 app.css.append_css({
     'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
 })
 
-# Diseñar el layout de la página con estilo
+# Design the page layout with style
 layout = html.Div([
     html.H1("Hacer Predicciones", style={'textAlign': 'center', 'color': '#4CAF50'}),
     
-    # Entradas para las variables
+    # Inputs for variables
     html.Div([
         html.Div([
             html.Label("pH:"),
@@ -85,15 +84,18 @@ layout = html.Div([
         ], style={'padding': 10, 'flex': 1}),
     ], style={'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'space-around'}),
     
-    html.Button('Hacer Predicción', id='predict-button', style={'width': '100%', 'padding': '10px', 'backgroundColor': '#4CAF50', 'color': 'white', 'border': 'none', 'margin': '10px 0'}),
+    html.Div(
+        html.Button('Hacer Predicción', id='predict-button', style={'padding': '10px', 'backgroundColor': '#4CAF50', 'color': 'white', 'border': 'none'}),
+        style={'textAlign': 'center'}
+    ),
     
     html.Div(id='prediction-output', style={'textAlign': 'center', 'margin': '20px', 'fontSize': '20px'}),
     
-    # Espacio para el gráfico
+    # Space for graph
     dcc.Graph(id='potability-graph', style={'height': '400px'})
 ])
 
-# Definir la callback para hacer predicciones con el modelo
+# Callback to make predictions with the model
 @app.callback(
     [Output('prediction-output', 'children'),
      Output('potability-graph', 'figure')],
@@ -134,7 +136,7 @@ def make_prediction(n_clicks, ph, hardness, solids, chloramines, sulfate, conduc
     potability_percentage = prediction[0][0] * 100
     potability = "Potable" if potability_percentage > 50 else "No Potable"
 
-    # Crear gráfico de potabilidad
+    # Create potability graph
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=potability_percentage,
@@ -148,3 +150,4 @@ def make_prediction(n_clicks, ph, hardness, solids, chloramines, sulfate, conduc
 
     result_text = f"Según el modelo, este agua es: {potability} ({potability_percentage:.2f}% de potabilidad)"
     return result_text, fig
+

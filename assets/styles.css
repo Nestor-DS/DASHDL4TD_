@@ -1,0 +1,23 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #742424;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #ff6161;
+}
+
+tr:hover {
+    background-color: #ff6767;
+}
