@@ -21,13 +21,14 @@ layout = html.Div(
                 html.H1(
                     "Explorar Datos de Potabilidad del Agua",
                     className='text-center my-4',
-                    style={'font-size': '2.5rem', 'font-weight': 'bold', 'color': '#4CAF50'}
+                    style={'font-size': '2.5rem', 'font-weight': 'bold', 'color': '#4CAF50','align':'center'}
                 ),
                 html.Div(
                     className='row justify-content-center',
                     children=[
                         html.Div(
-                            className='col-md-6',
+                            className='col-md-6 d-flex justify-content-between',
+                            style={'align':'center', },
                             children=[
                                 dcc.Dropdown(
                                     id='feature-dropdown',
@@ -35,7 +36,7 @@ layout = html.Div(
                                     value='ph',
                                     clearable=False,
                                     className='form-control mb-2',
-                                    style={'width': '100%', 'display': 'inline-block'}
+                                    style={'width': '48%', 'display': 'inline-block'}
                                 ),
                                 dcc.Dropdown(
                                     id='graph-type-dropdown',
@@ -43,14 +44,14 @@ layout = html.Div(
                                     value='Histograma',
                                     clearable=False,
                                     className='form-control',
-                                    style={'width': '100%', 'display': 'inline-block'}
+                                    style={'width': '48%', 'display': 'inline-block'}
                                 ),
                             ],
                         ),
                     ],
                 ),
                 html.Div(
-                    className='row mt-4',
+                    className='row mt-4 justify-content-center',  # Centro las gráficas horizontalmente
                     children=[
                         html.Div(
                             className='col-12',
@@ -75,6 +76,7 @@ layout = html.Div(
      Input('graph-type-dropdown', 'value')]
 )
 def update_graph(selected_feature, selected_graph_type):
+    color_map = {0: 'red', 1: 'blue'}  # 0 for non-potable (red), 1 for potable (blue)
     if selected_graph_type == 'Histograma':
         fig = px.histogram(
             df, 
@@ -82,7 +84,7 @@ def update_graph(selected_feature, selected_graph_type):
             color='Potability', 
             barmode='overlay',
             title=f"Distribución de {selected_feature} por Potabilidad",
-            template='plotly_dark'  # Changed to a dark theme
+            color_discrete_map=color_map
         )
         fig.update_layout(
             title={'x':0.5, 'xanchor': 'center'},
@@ -96,7 +98,8 @@ def update_graph(selected_feature, selected_graph_type):
             x=selected_feature,
             y='Potability',
             title=f"{selected_feature} vs Potabilidad",
-            template='plotly_dark'  # Changed to a dark theme
+            color='Potability',
+            color_discrete_map=color_map
         )
         fig.update_layout(
             title={'x':0.5, 'xanchor': 'center'},
@@ -112,7 +115,7 @@ def update_graph(selected_feature, selected_graph_type):
             points='all',
             color='Potability',
             title=f"Distribución de {selected_feature} por Potabilidad",
-            template='plotly_dark'  # Changed to a dark theme
+            color_discrete_map=color_map
         )
         fig.update_layout(
             title={'x':0.5, 'xanchor': 'center'},
@@ -126,7 +129,8 @@ def update_graph(selected_feature, selected_graph_type):
             x='Potability',
             y=selected_feature,
             title=f"{selected_feature} por Potabilidad",
-            template='plotly_dark'  # Changed to a dark theme
+            color='Potability',
+            color_discrete_map=color_map
         )
         fig.update_layout(
             title={'x':0.5, 'xanchor': 'center'},
