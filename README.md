@@ -1,5 +1,5 @@
 ```
-mi_aplicacion_dash/
+dashdl4td/
 │
 ├── assets/
 │   └── styles.css
@@ -9,14 +9,18 @@ mi_aplicacion_dash/
 │
 ├── models/
 │   ├── best_model.json
+│   ├── mrd.pkl
 │   └── best_model_weights.h5
 │
 ├── pages/
 │   ├── __init__.py
 │   ├── explore_data.py
+│   ├── compare_data.py
+│   ├── show_table.py
 │   └── make_predictions.py
 │
 ├── app.py
+├── index.py
 └── requirements.txt
 ```
 
