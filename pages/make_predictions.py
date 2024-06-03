@@ -7,6 +7,7 @@ import numpy as np
 import plotly.graph_objs as go
 from app import app
 
+
 # Función para predecir potabilidad
 def predecir_potabilidad(model, ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity):
     # Crear un array con los valores ingresados
@@ -28,59 +29,84 @@ print("Modelo cargado exitosamente.")
 
 # Diseño de la página web
 layout = html.Div([
-    html.H1("Hacer Predicciones", className='pixelify-sans', style={'textAlign': 'center', 'color': '#4CAF50'}),
+    html.Link(
+        rel='stylesheet',
+        href='/assets/styles.css'  # Ruta al archivo CSS que has creado style={'textAlign': 'light', 'color': '#4CAF50'}
+    ),
+    html.Div(
+        style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'gap': '10px'},
+        children=[
+            html.H1("Hacer Predicciones", id='titleMakePredictions', className='pixelify-sans'),
+            #html.Button('?', id='info-button', n_clicks=0, )
+        ]
+    ),
+
+    
+    html.P([
+        "Ingresa los valores de las variables para hacer una predicción de potabilidad del agua.",
+        html.Br(),
+        "Los valores por defecto son los promedios de las variables en el conjunto de datos.",
+        html.Br(),
+        "Restricciones:",
+        html.Br(),
+        "** Solo acepta valores con dos puntos decimales. (Ando en eso)**",
+    ], style={'textAlign': 'center', 'fontSize': '1.2em', 'margin': '20px', 'color': 'gray'}),
+
    # Inputs for variables
     html.Div([
         html.Div([
             html.Label("pH:", className='pixelify-sans'),
             dcc.Input(id='input-ph', type='number', step=0.01, style={'width': '100%'}, value=7.87),
-        ], style={'padding': 10, 'flex': 1}),
+        ], className='input-container',),
         
         html.Div([
             html.Label("Hardness:", className='pixelify-sans'),
             dcc.Input(id='input-hardness', type='number', step=0.01, style={'width': '100%'}, value=195.10),
-        ], style={'padding': 10, 'flex': 1}),
+        ], className='input-container',),
         
         html.Div([
             html.Label("Solids:", className='pixelify-sans'),
             dcc.Input(id='input-solids', type='number', step=0.01, style={'width': '100%'}, value = 17404.17),
-        ], style={'padding': 10, 'flex': 1}),
+        ], className='input-container',),
         
         html.Div([
             html.Label("Chloramines:", className='pixelify-sans'),
             dcc.Input(id='input-chloramines', type='number', step=0.01, style={'width': '100%'}, value = 7.50),
-        ], style={'padding': 10, 'flex': 1}),
+        ], className='input-container',),
         
         html.Div([
             html.Label("Sulfate:", className='pixelify-sans'),
             dcc.Input(id='input-sulfate', type='number', step=0.01, style={'width': '100%'}, value = 333.77),
-        ], style={'padding': 10, 'flex': 1}),
+        ], className='input-container',),
         
         html.Div([
             html.Label("Conductivity:", className='pixelify-sans'),
             dcc.Input(id='input-conductivity', type='number', step=0.01, style={'width': '100%'}, value = 327.45),
-        ], style={'padding': 10, 'flex': 1}),
+        ], className='input-container',),
         
         html.Div([
             html.Label("Organic Carbon:", className='pixelify-sans'),
             dcc.Input(id='input-organic_carbon', type='number', step=0.01, style={'width': '100%'}, value = 16.14),
-        ], style={'padding': 10, 'flex': 1}),
+        ], className='input-container',),
         
         html.Div([
             html.Label("Trihalomethanes:", className='pixelify-sans'),
             dcc.Input(id='input-trihalomethanes', type='number', step=0.01, style={'width': '100%'}, value  = 78.69),
-        ], style={'padding': 10, 'flex': 1}),
+        ], className='input-container',),
         
         html.Div([
             html.Label("Turbidity:", className='pixelify-sans'),
             dcc.Input(id='input-turbidity', type='number', step=0.01, style={'width': '100%'}, value=2.30),
-        ], style={'padding': 10, 'flex': 1}),
+        ], className='input-container',),
         
     ], style={'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'space-around'}),
     
     html.Div(
-        html.Button('Hacer Predicción',n_clicks=0, id='submit-val', style={'padding': '10px', 'backgroundColor': '#4CAF50', 'color': 'white', 'border': 'none', 'fontFamily': 'Pixelify Sans'}),
-        style={'textAlign': 'center'}
+        html.Button('Hacer Predicción',n_clicks=0, id='submit-val', ),
+        style={
+            'textAlign': 'center', 
+            'border': 'none', 
+        }
     ),
     
     html.Div([
