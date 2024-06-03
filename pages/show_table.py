@@ -1,6 +1,5 @@
-import dash_html_components as html
-import dash_table
-import dash_core_components as dcc
+from dash import html, dcc
+from dash import dash_table
 import pandas as pd
 import plotly.express as px
 from app import app
