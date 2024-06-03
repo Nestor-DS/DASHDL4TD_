@@ -1,11 +1,16 @@
-conda install -c conda-forge dash-bootstrap-components
-pip install dash-bootstrap-components
-conda install -c conda-forge watchdog
-
-dash
-dash-core-components
-dash-html-components
-dash-table
-pandas
-plotly
-tensorflow
+dash==2.17.0
+dash-bootstrap-components==1.6.0
+dash-core-components==2.0.0
+dash-html-components==2.0.0
+dash-table==5.0.0
+joblib==1.2.0
+numpy==1.26.4
+numpy-base==1.26.4
+numpydoc==1.5.0
+pandas==2.1.4
+plotly==5.19.0
+scikit-learn==1.2.2
+tensorflow==2.10.0
+tensorflow-base==2.10.0
+tensorflow-estimator==2.10.0
+watchdog==4.0.1
