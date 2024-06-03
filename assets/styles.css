@@ -1,65 +1,161 @@
 /* Carga la fuente personalizada desde Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap");
 
 /* Define los estilos para la fuente personalizada */
 .pixelify-sans {
-    font-family: 'Pixelify Sans', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400; /* Puedes ajustar el peso según tus preferencias */
-    font-style: normal;
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Puedes ajustar el peso según tus preferencias */
+  font-style: normal;
 }
 
 /* Puedes definir otras clases con diferentes pesos si lo necesitas */
 .pixelify-sans-bold {
-    font-family: 'Pixelify Sans', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700; /* Por ejemplo, un peso más pesado */
-    font-style: normal;
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700; /* Por ejemplo, un peso más pesado */
+  font-style: normal;
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
 body {
-    font-family: 'Pixelify Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 0;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
 }
 
 /* Estilos para la tabla */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 th {
-    background-color: #0051ff;
-    color: #1d0101; 
-    text-align: center; 
-    padding: 8px;
+  background-color: #0051ff;
+  color: #1d0101;
+  text-align: center;
+  padding: 8px;
 }
 
-th, td {
-    border: 1px solid #742424;
-    text-align: left;
-    padding: 8px;
+th,
+td {
+  border: 1px solid #742424;
+  text-align: left;
+  padding: 8px;
 }
 
 tr:hover {
-    background-color: #ff6767;
-    color: #00ff15;
-    /* Añade un efecto de sombra al pasar el ratón por encima de las filas */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #ff6767;
+  color: #00ff15;
+  /* Añade un efecto de sombra al pasar el ratón por encima de las filas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+button {
+  font-family: "Pixelify Sans", sans-serif;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #0051ff;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #6d7cff;
+}
+
+/* Make_predictions*/
+
+#titleMakePredictions {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #00bb5d;
+  text-align: center;
+}
+
+/* Estilo para el contenedor del título y el botón */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px; /* Espacio entre el título y el botón */
+}
+
+/* Estilo para el botón de información */
+#info-button {
+  margin: 0;
+  border: none;
+  background-color: rgb(84, 253, 121);
+  color: gray;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.5em; /* Tamaño de fuente del botón */
+}
+
+#info-button:hover {
+  background-color: #f0f0f0; /* Color de fondo al pasar el cursor por encima */
+}
+
+/* Estilos para el contenedor de entradas */
+.input-container {
+  text-align: center;
+  font-size: 1.3rem;
+  padding: 20px;
+  flex: 1;
+}
+
+/* Estilos para la caja de texto */
+input[type="text"] {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Suaviza la transición */
+}
+
+/* Estilos para la caja de texto cuando se enfoca */
+input:focus {
+  border-color: #00d9ff;
+  box-shadow: 0 0 5px rgba(0, 117, 250, 0.5);
+  outline: none;
+}
+
+#submit-val {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  background-color: #0051ff;
+  color: #ffffff;
+  text-align: center;
+}
+
+#submit-val:hover {
+  background-color: #6d7cff;
+  transform: scale(1.2);
+  transition: 0.5s;
 }
