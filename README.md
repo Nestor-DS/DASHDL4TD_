@@ -22,4 +22,18 @@ mi_aplicacion_dash/
 
 ## Interfaz:
 
-![alt text](images/image.png)
+### Ver dataset:
+
+![alt text](images/show_table.png)
+
+### Explorar datos:
+
+![alt text](images/explore_data.png)
+
+### Realizar predicciones:
+
+![alt text](images/predictions.png)
+
+### Comparar datos:
+
+![alt text](images/compare_data.png)
