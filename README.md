@@ -1,3 +1,34 @@
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Nestor-DS/DASHDL4TD_.git
+```
+    
+Install the libraries:
+
+**Conda:**
+```bash
+pip install -r requirements.txt
+```
+
+**Python:**
+```bash
+conda install --file requirements.txt
+```
+
+## Deployment
+
+To deploy this project, run:
+
+```bash
+python index.py
+```
+
+---
+
+
 ```
 dashdl4td/
 │
